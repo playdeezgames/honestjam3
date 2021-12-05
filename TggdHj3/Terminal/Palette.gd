@@ -1,0 +1,18 @@
+extends Node
+
+const BLACK = Color(0,0,0,1)
+const BLUE = Color(0,0,0.666,1)
+const GREEN = Color(0,0.666,0,1)
+const CYAN = Color(0,0.666,0.666,1)
+const RED = Color(0.666,0,0,1)
+const MAGENTA = Color(0.666,0,0.666,1)
+const BROWN = Color(0.666,0.333,0,1)
+const GRAY = Color(0.666,0.666,0.666,1)
+const DARK_GRAY = Color(0.333,0.333,0.333,1)
+const LIGHT_BLUE = Color(0.333,0.333,1,1)
+const LIGHT_GREEN = Color(0.333,1,0.333,1)
+const LIGHT_CYAN = Color(0.333,1,1,1)
+const LIGHT_RED = Color(1,0.333,0.333,1)
+const LIGHT_MAGENTA = Color(1,0.333,1,1)
+const YELLOW = Color(1,1,0.333,1)
+const WHITE = Color(1,1,1,1)
