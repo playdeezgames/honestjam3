@@ -16,6 +16,7 @@ func initializeStates():
 	_stateTable[_states.START_GAME]=load("res://States/Boilerplate/StartGameState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.IN_PLAY] = load("res://States/InPlayState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.LEAVE_PLAY] = load("res://States/Boilerplate/LeavePlayState.gd").new(_terminal, _palette, _states, _game)
+	_stateTable[_states.ABOUT] = load("res://States/Boilerplate/AboutState.gd").new(_terminal, _palette, _states)
 	_current = _states.MAIN_MENU
 
 
