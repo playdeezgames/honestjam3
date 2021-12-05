@@ -12,3 +12,6 @@ func generate(columns, rows):
 	for row in rows:
 		result.push_back(_mapRow.generate(columns))
 	return result
+
+func getCell(column,row):
+	return _data.map[row][column]

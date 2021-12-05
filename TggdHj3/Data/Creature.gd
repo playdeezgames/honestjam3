@@ -1,7 +1,12 @@
 extends Node
 
-func _init():
-	pass
+var _data
+var _directions = preload("res://Data/Directions.gd").new()
+
+func _init(data):
+	_data = data
 
 func generate():
-	return {}
+	var result = {}
+	result.facing = _directions.generate()
+	return result

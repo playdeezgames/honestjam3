@@ -12,3 +12,4 @@ func generate(columns):
 	for column in columns:
 		result.push_back(_mapCell.generate())
 	return result
+
