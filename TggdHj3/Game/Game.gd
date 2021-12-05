@@ -10,3 +10,9 @@ func reset(difficulty):
 
 func getData():
 	return _data
+
+func getAvatarPosition():
+	var result = {}
+	result.column = _data._data.column
+	result.row = _data._data.row
+	return result

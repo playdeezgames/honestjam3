@@ -22,12 +22,16 @@ func showState():
 	_terminal._color = _palette.CYAN
 	_terminal.writeLine("In Play:")
 	_terminal._color = _palette.GRAY
-	var column = _game.getData()._data.column
-	var row = _game.getData()._data.row
-	_terminal.writeLine("X:" + String(column))
-	_terminal.writeLine("Y:" + String(row))
-	var cell = _game.getData().getMap().getCell(column, row)
-	_terminal.writeLine("Facing:" + String(cell.creature.facing))
+	var avatarPosition = _game.getAvatarPosition()
+	_terminal.writeLine("X:" + String(avatarPosition.column))
+	_terminal.writeLine("Y:" + String(avatarPosition.row))
+	
+	var cell = _game.getData().getMap().getCell(avatarPosition.column, avatarPosition.row)
+	
+	#var avatarCreature = _game.getAvatarCreature()
+	
+	_terminal.writeLine("Facing:" + String(cell.creature.facing)) # avatarCreature.getFacing()
+	# avatarCreature.setFacing(2)
 	_terminal._color = _palette.YELLOW
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
