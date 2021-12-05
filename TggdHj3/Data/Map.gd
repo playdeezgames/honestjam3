@@ -1,9 +1,11 @@
 extends Node
 
-var _mapRow = preload("res://Data/MapRow.gd").new()
+var _mapRow
+var _data
 
-func _init():
-	pass
+func _init(data):
+	_data = data
+	_mapRow = load("res://Data/MapRow.gd").new(_data)
 
 func generate(columns, rows):
 	var result = []

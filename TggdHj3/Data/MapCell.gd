@@ -1,7 +1,9 @@
 extends Node
 
-func _init():
-	pass
+var _data
+
+func _init(data):
+	_data = data
 
 func generate():
 	return {}

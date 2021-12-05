@@ -3,7 +3,7 @@ extends Node
 var rng = RandomNumberGenerator.new()
 var _data = {}
 var _difficulty = preload("res://Game/Difficulty.gd").new()
-var _map = preload("res://Data/Map.gd").new()
+var _map = preload("res://Data/Map.gd").new(_data)
 
 func _init():
 	rng.randomize()
@@ -17,10 +17,8 @@ func generateAvatar():
 func reset(difficulty):
 	var rows = _difficulty.getDescriptor(difficulty).board.rows
 	var columns = _difficulty.getDescriptor(difficulty).board.columns
-	_data = {
-			"difficulty": difficulty,
-			"columns": columns,
-			"rows": rows,
-			"map": _map.generate(columns, rows)
-		}
+	_data.difficulty = difficulty
+	_data.columns = columns
+	_data.rows = rows
+	_data.map = _map.generate(columns, rows)
 	generateAvatar()
