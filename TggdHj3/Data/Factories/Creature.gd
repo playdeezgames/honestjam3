@@ -1,6 +1,6 @@
 extends Node
 
-var _directions = preload("res://Data/Directions.gd").new()
+var _directions = preload("res://Data/Factories/Directions.gd").new()
 
 func _init():
 	pass

@@ -3,10 +3,10 @@ extends Node
 var rng = RandomNumberGenerator.new()
 var _data = {}
 var _difficulty = preload("res://Game/Difficulty.gd").new()
-var _map = preload("res://Data/Map.gd").new(_data)
-var _avatar = preload("res://Data/Avatar.gd").new()
-var _mapWrapper = preload("res://Data/MapWrapper.gd")
-var _creature = preload("res://Data/Creature.gd").new()
+var _map = preload("res://Data/Factories/Map.gd").new(_data)
+var _avatar = preload("res://Data/Factories/Avatar.gd").new()
+var _mapWrapper = preload("res://Data/Wrappers/MapWrapper.gd")
+var _creature = preload("res://Data/Factories/Creature.gd").new()
 
 func _init():
 	rng.randomize()

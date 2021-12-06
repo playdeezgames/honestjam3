@@ -5,7 +5,7 @@ var _dataWrapper
 
 func _init():
 	_data = load("res://Data/Data.gd").new()
-	_dataWrapper = load("res://Data/DataWrapper.gd")
+	_dataWrapper = load("res://Data/Wrappers/DataWrapper.gd")
 
 func reset(difficulty):
 	_data.reset(difficulty)

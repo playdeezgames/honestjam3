@@ -3,7 +3,7 @@ extends Node
 var _mapRow
 
 func _init(data):
-	_mapRow = load("res://Data/MapRow.gd").new()
+	_mapRow = load("res://Data/Factories/MapRow.gd").new()
 
 func generate(columns, rows):
 	var result = []

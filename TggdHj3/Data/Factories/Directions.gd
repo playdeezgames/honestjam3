@@ -1,6 +1,6 @@
 extends Node
 
-var _rng = preload("res://Data/Rng.gd").new()
+var _rng = preload("res://Data/Utilities/Rng.gd").new()
 
 func _init():
 	pass

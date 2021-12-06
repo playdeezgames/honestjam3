@@ -1,7 +1,7 @@
 extends Node
 
 var _map
-var _mapCellWrapper = preload("res://Data/MapCellWrapper.gd")
+var _mapCellWrapper = preload("res://Data/Wrappers/MapCellWrapper.gd")
 
 func _init(map):
 	_map = map
