@@ -31,3 +31,14 @@ func turnAround():
 	var creature = data.getMap().getCell(avatar.getColumn(), avatar.getRow()).getCreature()
 	creature.turnAround()
 
+func moveAhead():
+	return false
+
+func moveLeft():
+	return false
+
+func moveRight():
+	return false
+
+func moveBack():
+	return false

@@ -27,17 +27,20 @@ func turnLeft():
 	_game.turnLeft()
 	_terminal._color = _palette.GREEN
 	_terminal.writeLine("")
+	_terminal.writeLine("")
 	_terminal.writeText("You turn left.")
 
 func turnRight():
 	_game.turnRight()
 	_terminal._color = _palette.GREEN
 	_terminal.writeLine("")
+	_terminal.writeLine("")
 	_terminal.writeText("You turn right.")
 
 func turnAround():
 	_game.turnAround()
 	_terminal._color = _palette.GREEN
+	_terminal.writeLine("")
 	_terminal.writeLine("")
 	_terminal.writeText("You turn around.")
 

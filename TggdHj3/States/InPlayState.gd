@@ -32,6 +32,7 @@ func showState():
 	_terminal._color = _palette.YELLOW
 	
 	_terminal.writeLine("1) Turn")
+	_terminal.writeLine("2) Move")
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
 	_terminal.writeLine("")
@@ -43,5 +44,7 @@ func handleInput(command):
 			return { "valid": true, "state": _states.LEAVE_PLAY}
 		"1":
 			return { "valid": true, "state": _states.TURN_MENU }
+		"2":
+			return { "valid": true, "state": _states.MOVE_MENU }
 		_:
 			return { "valid": false, "state": _states.IN_PLAY}
