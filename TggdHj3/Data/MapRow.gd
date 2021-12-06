@@ -1,11 +1,9 @@
 extends Node
 
 var _mapCell
-var _data
 
-func _init(data):
-	_data = data
-	_mapCell = load("res://Data/MapCell.gd").new(_data)
+func _init():
+	_mapCell = load("res://Data/MapCell.gd").new()
 	
 func generate(columns):
 	var result = []
