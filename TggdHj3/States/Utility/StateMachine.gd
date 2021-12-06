@@ -9,21 +9,22 @@ var _current
 var _game
 
 func initializeStates():
-	_states = preload("res://States/Utility/States.gd").new()
-	_stateTable[_states.MAIN_MENU] = preload("res://States/Boilerplate/MainMenuState.gd").new(_terminal, _palette, _states)
-	_stateTable[_states.CONFIRM_QUIT] = preload("res://States/Boilerplate/ConfirmQuitState.gd").new(_terminal, _palette, _states)
-	_stateTable[_states.CONFIRM_ABANDON] = preload("res://States/Boilerplate/ConfirmAbandonState.gd").new(_terminal, _palette, _states)
+	_states = load("res://States/Utility/States.gd").new()
+	_stateTable[_states.MAIN_MENU] = load("res://States/Boilerplate/MainMenuState.gd").new(_terminal, _palette, _states)
+	_stateTable[_states.CONFIRM_QUIT] = load("res://States/Boilerplate/ConfirmQuitState.gd").new(_terminal, _palette, _states)
+	_stateTable[_states.CONFIRM_ABANDON] = load("res://States/Boilerplate/ConfirmAbandonState.gd").new(_terminal, _palette, _states)
 	_stateTable[_states.START_GAME]=load("res://States/Boilerplate/StartGameState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.IN_PLAY] = load("res://States/InPlayState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.LEAVE_PLAY] = load("res://States/Boilerplate/LeavePlayState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.ABOUT] = load("res://States/Boilerplate/AboutState.gd").new(_terminal, _palette, _states)
+	_stateTable[_states.TURN_MENU] = load("res://States/TurnMenuState.gd").new(_terminal, _palette, _states, _game)
 	_current = _states.MAIN_MENU
 
 
 func _init(terminal, palette):
 	_terminal = terminal
 	_palette = palette
-	_inputBuffer = preload("res://Terminal/InputBuffer.gd").new()
+	_inputBuffer = load("res://Terminal/InputBuffer.gd").new()
 	_game = load("res://Game/Game.gd").new()
 	initializeStates()
 	showState()
