@@ -10,3 +10,9 @@ func getColumn():
 	
 func getRow():
 	return _avatar.row
+
+func putColumn(column):
+	_avatar.column = column
+	
+func putRow(row):
+	_avatar.row = row

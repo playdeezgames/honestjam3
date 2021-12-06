@@ -7,9 +7,15 @@ func _init(mapCell):
 	_mapCell = mapCell
 
 func getCreature():
-	if _mapCell.creature!=null:
+	if hasCreature():
 		return _creatureWrapper.new(_mapCell.creature)
 	return null
 	
-func putCreature(creature):
+func hasCreature():
+	return _mapCell.creature!=null
+	
+func getCreatureData():
+	return _mapCell.creature
+	
+func putCreatureData(creature):
 	_mapCell.creature = creature
