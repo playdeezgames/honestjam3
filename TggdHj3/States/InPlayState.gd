@@ -26,9 +26,14 @@ func showState():
 	_terminal.writeLine("X:" + String(avatar.getColumn()))
 	_terminal.writeLine("Y:" + String(avatar.getRow()))
 	
-	var creature = _game.getData().getMap().getCell(avatar.getColumn(), avatar.getRow()).getCreature()
-	
+	var cell = _game.getData().getMap().getCell(avatar.getColumn(), avatar.getRow())
+	var creature = cell.getCreature()
 	_terminal.writeLine("Facing:" + String(creature.getFacing()))
+	
+	var features = cell.getFeatures()
+	for feature in features:
+		_terminal.writeLine("Feature: " + feature.getType())
+	
 	_terminal._color = _palette.YELLOW
 	
 	_terminal.writeLine("1) Turn")

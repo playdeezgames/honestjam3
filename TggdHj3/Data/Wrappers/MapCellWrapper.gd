@@ -1,7 +1,8 @@
 extends Node
 
 var _mapCell
-var _creatureWrapper = preload("res://Data/Wrappers/CreatureWrapper.gd")
+var _creatureWrapper = load("res://Data/Wrappers/CreatureWrapper.gd")
+var _featureWrapper = load("res://Data/Wrappers/FeatureWrapper.gd")
 
 func _init(mapCell):
 	_mapCell = mapCell
@@ -19,3 +20,12 @@ func getCreatureData():
 	
 func putCreatureData(creature):
 	_mapCell.creature = creature
+
+func addFeatureData(feature):
+	_mapCell.features.push_back(feature)
+
+func getFeatures():
+	var result = []
+	for feature in _mapCell.features:
+		result.push_back(_featureWrapper.new(feature))
+	return result
