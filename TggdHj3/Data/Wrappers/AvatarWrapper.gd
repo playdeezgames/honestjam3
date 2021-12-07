@@ -16,3 +16,6 @@ func putColumn(column):
 	
 func putRow(row):
 	_avatar.row = row
+	
+func addItemData(item):
+	_avatar.items.push_back(item)

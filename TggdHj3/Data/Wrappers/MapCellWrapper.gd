@@ -47,5 +47,11 @@ func getItems():
 		result.push_back(_itemWrapper.new(item))
 	return result
 	
+func getItem(index):
+	return _itemWrapper.new(_mapCell.items[index])
+	
 func hasItems():
 	return getItems().size()>0
+	
+func removeItem(index):
+	_mapCell.items.remove(index)

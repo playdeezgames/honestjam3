@@ -16,3 +16,6 @@ func _init(item):
 
 func getDescription():
 	return itemDescriptors[_item.itemType].description
+	
+func getItemData():
+	return _item
