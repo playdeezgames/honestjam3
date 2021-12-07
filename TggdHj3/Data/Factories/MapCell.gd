@@ -6,6 +6,7 @@ func _init():
 func generate():
 	var result = {}
 	result.creature = null
+	result.terrain = null
 	result.features = []
 	result.items = []
 	return result

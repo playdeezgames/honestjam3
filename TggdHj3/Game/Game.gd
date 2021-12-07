@@ -13,22 +13,40 @@ func reset(difficulty):
 
 func getData():
 	return _dataWrapper.new(_data._data)
+	
+func getAvatar():
+	return getData().getAvatar()
+	
+func getCurrentCell():
+	var avatar = getAvatar()
+	return getData().getMap().getCell(avatar.getColumn(), avatar.getRow())
+	
+func getAvatarCreature():
+	return getCurrentCell().getCreature()
+	
+func getNextCell():
+	var avatar = getAvatar()
+	var creature = getAvatarCreature()
+	var direction = creature.getFacing()
+	var nextPosition = _directions.step(direction, avatar.getColumn(), avatar.getRow())
+	return getData().getMap().getCell(nextPosition.column, nextPosition.row)
+	
 
 func turnLeft():
 	var data = getData()
-	var avatar = data.getAvatar()
+	var avatar = getAvatar()
 	var creature = data.getMap().getCell(avatar.getColumn(), avatar.getRow()).getCreature()
 	creature.turnLeft()
 
 func turnRight():
 	var data = getData()
-	var avatar = data.getAvatar()
+	var avatar = getAvatar()
 	var creature = data.getMap().getCell(avatar.getColumn(), avatar.getRow()).getCreature()
 	creature.turnRight()
 
 func turnAround():
 	var data = getData()
-	var avatar = data.getAvatar()
+	var avatar = getAvatar()
 	var creature = data.getMap().getCell(avatar.getColumn(), avatar.getRow()).getCreature()
 	creature.turnAround()
 

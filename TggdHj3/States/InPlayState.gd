@@ -16,23 +16,43 @@ func autoSave():
 	file.open("user://autosave.dat", File.WRITE)
 	file.store_var(_game._data._data)
 	file.close()
+
+func describeFeature(feature):
+	_terminal.writeLine(feature.getDescription())
 	
+func describeFeatures(cell):
+	var features = cell.getFeatures()
+	for feature in features:
+		describeFeature(feature)
+
+func describeTerrain(cell):
+	var terrain = cell.getTerrain()
+	_terminal.writeLine("You are in " + terrain.getDescription())
+	
+func describeAhead(cell):
+	if cell!=null:
+		var terrain = cell.getTerrain()
+		_terminal.writeLine("Ahead of you is " + terrain.getDescription())
+	else:
+		_terminal.writeLine("Ahead of you is the empty, lonely void, calling to you.")
+
 func showState():
 	autoSave()
 	_terminal._color = _palette.CYAN
 	_terminal.writeLine("In Play:")
 	_terminal._color = _palette.GRAY
-	var avatar = _game.getData().getAvatar()
-	_terminal.writeLine("X:" + String(avatar.getColumn()))
-	_terminal.writeLine("Y:" + String(avatar.getRow()))
+	#var avatar = _game.getAvatar()
+	#_terminal.writeLine("X:" + String(avatar.getColumn()))
+	#_terminal.writeLine("Y:" + String(avatar.getRow()))
 	
-	var cell = _game.getData().getMap().getCell(avatar.getColumn(), avatar.getRow())
-	var creature = cell.getCreature()
-	_terminal.writeLine("Facing:" + String(creature.getFacing()))
+	var cell = _game.getCurrentCell()
+	#var creature = cell.getCreature()
+	#_terminal.writeLine("Facing:" + String(creature.getFacing()))
 	
-	var features = cell.getFeatures()
-	for feature in features:
-		_terminal.writeLine("Feature: " + feature.getType())
+	describeTerrain(cell)
+	describeFeatures(cell)
+	
+	describeAhead(_game.getNextCell())
 	
 	_terminal._color = _palette.YELLOW
 	
