@@ -9,6 +9,7 @@ var _mapWrapper = load("res://Data/Wrappers/MapWrapper.gd")
 var _creature = load("res://Data/Factories/Creature.gd").new()
 var _feature = load("res://Data/Factories/Feature.gd").new()
 var _terrain = load("res://Data/Factories/Terrain.gd").new()
+var _item = load("res://Data/Factories/Item.gd").new()
 
 func _init():
 	rng.randomize()
@@ -32,11 +33,20 @@ func populateTerrain(map):
 		for row in map.getRows():
 			map.getCell(column, row).setTerrainData(_terrain.generate())
 	
+func populateItems(map):
+	for itemType in _item.getItemTypes():
+		var itemCount = _item.getCount(itemType)
+		for index in itemCount:
+			var column = rng.randi_range(0, map.getColumns()-1)
+			var row = rng.randi_range(0, map.getRows()-1)
+			map.getCell(column,row).addItemData(_item.generate(itemType))
+	
 func populateMap():
 	var map = _mapWrapper.new(_data.map)
 	populateTerrain(map)
 	populateCorners(map)
 	populateEdges(map)
+	populateItems(map)
 
 func placeAvatar():
 	var map = _mapWrapper.new(_data.map)

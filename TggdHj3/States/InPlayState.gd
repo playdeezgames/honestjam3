@@ -29,6 +29,13 @@ func describeTerrain(cell):
 	var terrain = cell.getTerrain()
 	_terminal.writeLine("You are in " + terrain.getDescription())
 	
+func describeItems(cell):
+	var items = cell.getItems()
+	if items.size()>0:
+		_terminal.writeLine("On the ground:")
+		for item in items:
+			_terminal.writeLine(" - " + item.getDescription())
+	
 func describeAhead(cell):
 	if cell!=null:
 		var terrain = cell.getTerrain()
@@ -51,6 +58,7 @@ func showState():
 	
 	describeTerrain(cell)
 	describeFeatures(cell)
+	describeItems(cell)
 	
 	describeAhead(_game.getNextCell())
 	
