@@ -66,10 +66,17 @@ func showState():
 	
 	_terminal.writeLine("1) Turn")
 	_terminal.writeLine("2) Move")
+	if _game.hasGroundItems():
+		_terminal.writeLine("3) Take...")
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
 	_terminal.writeLine("")
 	_terminal.writeText(">")
+
+func onTake():
+	if _game.hasGroundItems():
+		return { "valid": true, "state": _states.GROUND_INVENTORY}
+	return { "valid": false, "state": _states.IN_PLAY}
 
 func handleInput(command):
 	match command:
@@ -79,5 +86,7 @@ func handleInput(command):
 			return { "valid": true, "state": _states.TURN_MENU }
 		"2":
 			return { "valid": true, "state": _states.MOVE_MENU }
+		"3":
+			return onTake()
 		_:
 			return { "valid": false, "state": _states.IN_PLAY}

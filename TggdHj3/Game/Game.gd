@@ -30,7 +30,9 @@ func getNextCell():
 	var direction = creature.getFacing()
 	var nextPosition = _directions.step(direction, avatar.getColumn(), avatar.getRow())
 	return getData().getMap().getCell(nextPosition.column, nextPosition.row)
-	
+
+func hasGroundItems():
+	return getCurrentCell().hasItems()
 
 func turnLeft():
 	var data = getData()

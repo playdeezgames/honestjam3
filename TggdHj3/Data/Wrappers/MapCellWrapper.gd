@@ -46,3 +46,6 @@ func getItems():
 	for item in _mapCell.items:
 		result.push_back(_itemWrapper.new(item))
 	return result
+	
+func hasItems():
+	return getItems().size()>0
