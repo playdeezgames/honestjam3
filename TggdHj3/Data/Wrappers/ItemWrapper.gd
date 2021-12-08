@@ -18,3 +18,11 @@ func getItemData():
 
 func getCount():
 	return _item.count
+	
+func canEquip():
+	var descriptor = _itemDescriptors.getDescriptor(_item.itemType)
+	return descriptor.equipSlot!=null
+	
+func getEquipSlot():
+	var descriptor = _itemDescriptors.getDescriptor(_item.itemType)
+	return descriptor.equipSlot

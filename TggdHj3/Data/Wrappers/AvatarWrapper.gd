@@ -34,3 +34,12 @@ func getItems():
 	
 func removeItem(index):
 	_avatar.items.remove(index)
+	
+func isEquipped(equipSlot):
+	return _avatar.equipSlots.has(equipSlot)
+
+func equip(equipSlot, item):
+	_avatar.equipSlots[equipSlot]=item
+	
+func unequip(equipSlot):
+	_avatar.equipSlots.erase(equipSlot)

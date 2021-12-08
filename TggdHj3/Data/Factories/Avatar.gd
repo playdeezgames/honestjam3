@@ -10,7 +10,7 @@ func generate(map):
 	var row = _rng.randi_range(0, map.getRows()-1)
 	var cell = map.getCell(column,row)
 	if cell!=null && cell.getCreature()==null:
-		return { "column": column, "row":row, "items":[] }
+		return { "column": column, "row":row, "items":[], "equipSlots":{} }
 	else:
 		return generate(map)
 
