@@ -37,6 +37,20 @@ func removeItem(index):
 	
 func isEquipped(equipSlot):
 	return _avatar.equipSlots.has(equipSlot)
+	
+func hasEquipped():
+	return _avatar.equipSlots.size()>0
+	
+func getEquippedSlots():
+	var result = []
+	for key in _avatar.equipSlots:
+		result.push_back(key)
+	return result
+	
+func getEquipped(equipSlot):
+	if isEquipped(equipSlot):
+		return _itemWrapper.new(_avatar.equipSlots[equipSlot])
+	return null
 
 func equip(equipSlot, item):
 	_avatar.equipSlots[equipSlot]=item

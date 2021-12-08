@@ -10,3 +10,6 @@ const equipSlotDescriptors = {
 
 func _init():
 	pass
+
+func getDescriptor(equipSlot):
+	return equipSlotDescriptors[equipSlot]
