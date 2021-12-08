@@ -31,3 +31,6 @@ func getItems():
 	for item in _avatar.items:
 		result.push_back(_itemWrapper.new(item))
 	return result
+	
+func removeItem(index):
+	_avatar.items.remove(index)

@@ -28,9 +28,16 @@ func showState():
 	_terminal.writeLine("")
 	_terminal.writeText(">")
 
+func zoomIn(index):
+	if index>=0 && index<_game.getAvatar().getItems().size():
+		_game.setCurrentInventoryIndex(index)
+		return { "valid":true, "state": _states.INVENTORY_DETAIL}
+	return { "valid":false, "state": _states.INVENTORY}
+
 func handleInput(command):
 	match command:
 		"0": 
 			return { "valid":true, "state": _states.IN_PLAY}
 		_:
-			return { "valid":false, "state": _states.TURN_MENU}
+			return zoomIn(int(command)-1)
+			

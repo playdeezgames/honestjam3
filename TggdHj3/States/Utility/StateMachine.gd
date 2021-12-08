@@ -21,6 +21,7 @@ func initializeStates():
 	_stateTable[_states.MOVE_MENU] = load("res://States/MoveMenuState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.GROUND_INVENTORY] = load("res://States/GroundInventoryState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.INVENTORY] = load("res://States/InventoryState.gd").new(_terminal, _palette, _states, _game)
+	_stateTable[_states.INVENTORY_DETAIL] = load("res://States/InventoryDetailState.gd").new(_terminal, _palette, _states, _game)
 	_current = _states.MAIN_MENU
 
 
