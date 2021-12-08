@@ -1,21 +1,20 @@
 extends Node
 
-const itemDescriptors = {
-	"trousers":{
-		"description": "a dignified pair of trousers"
-	},
-	"jools":{
-		"description": "jools"
-	}
-}
-
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
 var _item
 
 func _init(item):
 	_item = item
 
 func getDescription():
-	return itemDescriptors[_item.itemType].description
+	var descriptor = _itemDescriptors.getDescriptor(_item.itemType)
+	var count = getCount()
+	if count>1:
+		return descriptor.description + " (x"+String(count)+")"
+	return descriptor.description
 	
 func getItemData():
 	return _item
+
+func getCount():
+	return _item.count

@@ -5,6 +5,7 @@ var _creatureWrapper = load("res://Data/Wrappers/CreatureWrapper.gd")
 var _featureWrapper = load("res://Data/Wrappers/FeatureWrapper.gd")
 var _terrainWrapper = load("res://Data/Wrappers/TerrainWrapper.gd")
 var _itemWrapper = load("res://Data/Wrappers/ItemWrapper.gd")
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
 
 func _init(mapCell):
 	_mapCell = mapCell
@@ -40,6 +41,7 @@ func getTerrain():
 	
 func addItemData(item):
 	_mapCell.items.push_back(item)
+	_mapCell.items = _itemDescriptors.restackItems(_mapCell.items)
 	
 func getItems():
 	var result = []

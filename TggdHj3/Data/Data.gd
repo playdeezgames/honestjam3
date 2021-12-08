@@ -10,6 +10,7 @@ var _creature = load("res://Data/Factories/Creature.gd").new()
 var _feature = load("res://Data/Factories/Feature.gd").new()
 var _terrain = load("res://Data/Factories/Terrain.gd").new()
 var _item = load("res://Data/Factories/Item.gd").new()
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
 
 func _init():
 	rng.randomize()
@@ -34,8 +35,8 @@ func populateTerrain(map):
 			map.getCell(column, row).setTerrainData(_terrain.generate())
 	
 func populateItems(map):
-	for itemType in _item.getItemTypes():
-		var itemCount = _item.getCount(itemType)
+	for itemType in _itemDescriptors.getItemTypes():
+		var itemCount = _itemDescriptors.getCount(itemType)
 		for index in itemCount:
 			var column = rng.randi_range(0, map.getColumns()-1)
 			var row = rng.randi_range(0, map.getRows()-1)

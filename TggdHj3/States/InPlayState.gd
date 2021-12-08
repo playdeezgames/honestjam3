@@ -68,6 +68,8 @@ func showState():
 	_terminal.writeLine("2) Move")
 	if _game.hasGroundItems():
 		_terminal.writeLine("3) Take...")
+	if _game.getAvatar().hasItems():
+		_terminal.writeLine("4) Inventory")
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
 	_terminal.writeLine("")
@@ -76,6 +78,11 @@ func showState():
 func onTake():
 	if _game.hasGroundItems():
 		return { "valid": true, "state": _states.GROUND_INVENTORY}
+	return { "valid": false, "state": _states.IN_PLAY}
+	
+func onInventory():
+	if _game.getAvatar().hasItems():
+		return { "valid": true, "state": _states.INVENTORY}
 	return { "valid": false, "state": _states.IN_PLAY}
 
 func handleInput(command):
@@ -88,5 +95,7 @@ func handleInput(command):
 			return { "valid": true, "state": _states.MOVE_MENU }
 		"3":
 			return onTake()
+		"4":
+			return onInventory()
 		_:
 			return { "valid": false, "state": _states.IN_PLAY}
