@@ -2,10 +2,10 @@ extends Node
 
 const terrainDescriptors = {
 	"grass":{
-		"description":"a grassy area."
+		"description":"a grassy area"
 	},
 	"trees":{
-		"description":"a wooded area."
+		"description":"a wooded area"
 	}
 }
 

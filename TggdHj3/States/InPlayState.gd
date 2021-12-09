@@ -40,6 +40,9 @@ func describeAhead(cell):
 	if cell!=null:
 		var terrain = cell.getTerrain()
 		_terminal.writeLine("Ahead of you is " + terrain.getDescription()+".")
+		if cell.hasCreature():
+			var creature = cell.getCreature()
+			_terminal.writeLine("You are facing "+creature.getDescription()+".")
 	else:
 		_terminal.writeLine("Ahead of you is the empty, lonely void, calling to you.")
 

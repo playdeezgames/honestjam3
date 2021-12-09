@@ -12,6 +12,7 @@ var _terrain = load("res://Data/Factories/Terrain.gd").new()
 var _item = load("res://Data/Factories/Item.gd").new()
 var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
 var featureDescriptors = load("res://Data/Descriptors/FeatureDescriptors.gd").new()
+var creatureDescriptors = load("res://Data/Descriptors/CreatureDescriptors.gd").new()
 
 func _init():
 	rng.randomize()
@@ -42,6 +43,20 @@ func populateItems(map):
 			var column = rng.randi_range(0, map.getColumns()-1)
 			var row = rng.randi_range(0, map.getRows()-1)
 			map.getCell(column,row).addItemData(_item.generate(itemType))
+			
+func populateCreature(map, creatureType):
+	var column = rng.randi_range(0, map.getColumns()-1)
+	var row = rng.randi_range(0, map.getRows()-1)
+	if map.getCell(column,row).hasCreature():
+		populateCreature(map, creatureType)
+	else:
+		map.getCell(column,row).putCreatureData(_creature.generate(creatureType))
+			
+func populateCreatures(map):
+	for creatureType in creatureDescriptors.getCreatureTypes():
+		var descriptor = creatureDescriptors.getDescriptor(creatureType)
+		for index in descriptor.count:
+			populateCreature(map, creatureType)
 	
 func populateMap():
 	var map = _mapWrapper.new(_data.map)
@@ -49,11 +64,12 @@ func populateMap():
 	populateCorners(map)
 	populateEdges(map)
 	populateItems(map)
+	populateCreatures(map)
 
 func placeAvatar():
 	var map = _mapWrapper.new(_data.map)
 	_data.avatar = _avatar.generate(map)
-	map.getCell(_data.avatar.column, _data.avatar.row).putCreatureData(_creature.generate())
+	map.getCell(_data.avatar.column, _data.avatar.row).putCreatureData(_creature.generate(creatureDescriptors.AVATAR))
 	
 func reset(difficulty):
 	var rows = _difficulty.getDescriptor(difficulty).board.rows
