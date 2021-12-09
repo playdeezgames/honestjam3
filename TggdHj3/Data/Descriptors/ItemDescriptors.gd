@@ -9,7 +9,7 @@ var itemDescriptors = {
 	TROUSERS:{
 		"description": "a dignified pair of trousers",
 		"stackable": false,
-		"count":100,
+		"count":1,
 		"equipSlot": equipSlotDescriptors.LEGS
 	},
 	JOOLS:{

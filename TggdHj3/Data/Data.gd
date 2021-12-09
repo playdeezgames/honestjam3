@@ -10,24 +10,25 @@ var _creature = load("res://Data/Factories/Creature.gd").new()
 var _feature = load("res://Data/Factories/Feature.gd").new()
 var _terrain = load("res://Data/Factories/Terrain.gd").new()
 var _item = load("res://Data/Factories/Item.gd").new()
-var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
+var featureDescriptors = load("res://Data/Descriptors/FeatureDescriptors.gd").new()
 
 func _init():
 	rng.randomize()
 	
 func populateCorners(map):
-	map.getCell(0,0).addFeatureData(_feature.generate(_feature.MAP_CORNER))
-	map.getCell(0,map.getRows()-1).addFeatureData(_feature.generate(_feature.MAP_CORNER))
-	map.getCell(map.getColumns()-1,0).addFeatureData(_feature.generate(_feature.MAP_CORNER))
-	map.getCell(map.getColumns()-1,map.getRows()-1).addFeatureData(_feature.generate(_feature.MAP_CORNER))
+	map.getCell(0,0).addFeatureData(_feature.generate(featureDescriptors.MAP_CORNER))
+	map.getCell(0,map.getRows()-1).addFeatureData(_feature.generate(featureDescriptors.MAP_CORNER))
+	map.getCell(map.getColumns()-1,0).addFeatureData(_feature.generate(featureDescriptors.MAP_CORNER))
+	map.getCell(map.getColumns()-1,map.getRows()-1).addFeatureData(_feature.generate(featureDescriptors.MAP_CORNER))
 
 func populateEdges(map):
 	for column in range(1, map.getColumns()-2):
-		map.getCell(column,0).addFeatureData(_feature.generate(_feature.MAP_EDGE))
-		map.getCell(column,map.getRows()-1).addFeatureData(_feature.generate(_feature.MAP_EDGE))
+		map.getCell(column,0).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
+		map.getCell(column,map.getRows()-1).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
 	for row in range(1, map.getRows()-2):
-		map.getCell(0, row).addFeatureData(_feature.generate(_feature.MAP_EDGE))
-		map.getCell(map.getColumns()-1,row).addFeatureData(_feature.generate(_feature.MAP_EDGE))
+		map.getCell(0, row).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
+		map.getCell(map.getColumns()-1,row).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
 		
 func populateTerrain(map):
 	for column in map.getColumns():

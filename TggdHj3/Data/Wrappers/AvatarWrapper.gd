@@ -2,7 +2,7 @@ extends Node
 
 var _avatar
 var _itemWrapper = load("res://Data/Wrappers/ItemWrapper.gd")
-var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
 
 func _init(avatar):
 	_avatar = avatar

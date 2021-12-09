@@ -1,6 +1,6 @@
 extends Node
 
-var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptor.gd").new()
+var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
 var _item
 
 func _init(item):

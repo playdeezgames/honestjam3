@@ -1,13 +1,7 @@
 extends Node
 
-const _featureDescriptors =	{
-		"mapedge":{
-			"description":"You are at the edge of the world."
-		},
-		"mapcorner":{
-			"description":"You are in the corner of the world."
-		}		
-	}
+var featureDescriptors = load("res://Data/Descriptors/FeatureDescriptors.gd").new()
+var states = load("res://States/Utility/States.gd").new()
 
 var _feature
 
@@ -18,4 +12,4 @@ func getType():
 	return _feature.featureType
 	
 func getDescription():
-	return _featureDescriptors[_feature.featureType].description
+	return featureDescriptors.getDescriptor(_feature.featureType).description

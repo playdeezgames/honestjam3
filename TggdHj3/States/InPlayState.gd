@@ -72,6 +72,8 @@ func showState():
 		_terminal.writeLine("4) Inventory")
 	if _game.getAvatar().hasEquipped():
 		_terminal.writeLine("5) Equipment")
+	if _game.getCurrentCell().hasFeatures():
+		_terminal.writeLine("6) Interact...")
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
 	_terminal.writeLine("")
@@ -91,6 +93,11 @@ func onEquipment():
 	if _game.getAvatar().hasEquipped():
 		return { "valid": true, "state": _states.EQUIPMENT}
 	return { "valid": false, "state": _states.IN_PLAY}
+	
+func onInteract():
+	if _game.getCurrentCell().hasFeatures():
+		return { "valid": true, "state": _states.INTERACT}
+	return { "valid": false, "state": _states.IN_PLAY}
 
 func handleInput(command):
 	match command:
@@ -106,5 +113,7 @@ func handleInput(command):
 			return onInventory()
 		"5":
 			return onEquipment()
+		"6":
+			return onInteract()
 		_:
 			return { "valid": false, "state": _states.IN_PLAY}

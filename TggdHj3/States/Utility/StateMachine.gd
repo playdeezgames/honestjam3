@@ -24,6 +24,7 @@ func initializeStates():
 	_stateTable[_states.INVENTORY_DETAIL] = load("res://States/InventoryDetailState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.EQUIPMENT] = load("res://States/EquipmentState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.EQUIPMENT_DETAIL] = load("res://States/EquipmentDetailState.gd").new(_terminal, _palette, _states, _game)
+	_stateTable[_states.INTERACT] = load("res://States/InteractState.gd").new(_terminal, _palette, _states, _game)
 	_current = _states.MAIN_MENU
 
 func _init(terminal, palette):

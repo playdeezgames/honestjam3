@@ -1,8 +1,5 @@
 extends Node
 
-const MAP_EDGE = "mapedge"
-const MAP_CORNER = "mapcorner"
-
 func _init():
 	pass
 	
