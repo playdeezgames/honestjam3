@@ -4,12 +4,19 @@ var _data
 var _dataWrapper
 var _directions = load("res://Data/Factories/Directions.gd").new()
 var currentInventoryIndex
+var currentEquipSlot
 
 func getCurrentInventoryIndex():
 	return currentInventoryIndex
 
 func setCurrentInventoryIndex(index):
 	currentInventoryIndex = index
+	
+func setCurrentEquipSlot(slot):
+	currentEquipSlot = slot
+	
+func getCurrentEquipSlot():
+	return currentEquipSlot
 
 func _init():
 	_data = load("res://Data/Data.gd").new()

@@ -31,10 +31,16 @@ func showState():
 	_terminal.writeLine("")
 	_terminal.writeText(">")
 
+func zoomIn(index):
+	var equippedSlots = _game.getAvatar().getEquippedSlots()
+	if index>=0 && index<equippedSlots.size():
+		_game.setCurrentEquipSlot(equippedSlots[index])
+		return { "valid":true, "state": _states.EQUIPMENT_DETAIL}
+	return { "valid":false, "state": _states.EQUIPMENT}
 
 func handleInput(command):
 	match command:
 		"0": 
 			return { "valid":true, "state": _states.IN_PLAY}
 		_:
-			return { "valid":false, "state": _states.EQUIPMENT}
+			return zoomIn(int(command)-1)
