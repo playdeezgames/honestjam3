@@ -18,7 +18,7 @@ func autoSave():
 	file.close()
 
 func describeFeature(feature):
-	_terminal.writeLine(feature.getDescription())
+	_terminal.writeLine("You see "+feature.getDescription()+".")
 	
 func describeFeatures(cell):
 	var features = cell.getFeatures()
@@ -27,7 +27,7 @@ func describeFeatures(cell):
 
 func describeTerrain(cell):
 	var terrain = cell.getTerrain()
-	_terminal.writeLine("You are in " + terrain.getDescription())
+	_terminal.writeLine("You are in " + terrain.getDescription()+".")
 	
 func describeItems(cell):
 	var items = cell.getItems()
@@ -39,7 +39,7 @@ func describeItems(cell):
 func describeAhead(cell):
 	if cell!=null:
 		var terrain = cell.getTerrain()
-		_terminal.writeLine("Ahead of you is " + terrain.getDescription())
+		_terminal.writeLine("Ahead of you is " + terrain.getDescription()+".")
 	else:
 		_terminal.writeLine("Ahead of you is the empty, lonely void, calling to you.")
 

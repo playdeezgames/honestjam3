@@ -3,12 +3,15 @@ extends Node
 const MAP_EDGE = "mapedge"
 const MAP_CORNER = "mapcorner"
 
-const _featureDescriptors =	{
+var states = load("res://States/Utility/States.gd").new()
+var _featureDescriptors =	{
 		MAP_EDGE:{
-			"description":"You are at the edge of the world."
+			"description":"the edge of the world",
+			"interactState": states.INTERACT_EDGE
 		},
 		MAP_CORNER:{
-			"description":"You are in the corner of the world."
+			"description":"the corner of the world",
+			"interactState": states.INTERACT_CORNER
 		}		
 	}
 

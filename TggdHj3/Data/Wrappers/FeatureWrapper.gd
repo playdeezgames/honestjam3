@@ -1,7 +1,6 @@
 extends Node
 
 var featureDescriptors = load("res://Data/Descriptors/FeatureDescriptors.gd").new()
-var states = load("res://States/Utility/States.gd").new()
 
 var _feature
 
@@ -13,3 +12,6 @@ func getType():
 	
 func getDescription():
 	return featureDescriptors.getDescriptor(_feature.featureType).description
+	
+func getInteractState():
+	return featureDescriptors.getDescriptor(_feature.featureType).interactState
