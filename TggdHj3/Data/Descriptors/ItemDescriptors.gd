@@ -11,19 +11,22 @@ var itemDescriptors = {
 		"description": "a dignified pair of trousers",
 		"stackable": false,
 		"count":1,
-		"equipSlot": equipSlotDescriptors.LEGS
+		"equipSlot": equipSlotDescriptors.LEGS,
+		"usable": false
 	},
 	JOOLS:{
 		"description": "jools",
 		"stackable": true,
 		"count":100,
-		"equipSlot": null
+		"equipSlot": null,
+		"usable": false
 	},
 	POTION:{
 		"description": "potion",
 		"stackable": true,
-		"count": 10,
-		"equipSlot": null
+		"count": 100,
+		"equipSlot": null,
+		"usable": true
 	}
 }
 

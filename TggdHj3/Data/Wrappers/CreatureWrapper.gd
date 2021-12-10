@@ -35,5 +35,9 @@ func isDead():
 func addWounds(wounds):
 	_creature.wounds = _creature.wounds + wounds
 	
+func drinkPotion():
+	_creature.wounds = 0
+	
 func getTarget():
 	return _creature.target
+	

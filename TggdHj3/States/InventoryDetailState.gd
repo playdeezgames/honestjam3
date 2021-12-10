@@ -4,6 +4,7 @@ var _terminal
 var _palette
 var _states
 var _game
+var itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
 
 func _init(terminal, palette, states, game):
 	_terminal = terminal
@@ -31,6 +32,8 @@ func showState():
 		_terminal.writeLine("1) Drop")
 	if getItem().canEquip():
 		_terminal.writeLine("3) Equip")
+	if getItem().canUse():
+		_terminal.writeLine("4) Use")
 
 	_terminal.writeLine("0) Nevermind")
 	_terminal._color = _palette.GRAY
@@ -80,6 +83,27 @@ func doEquip():
 			return { "valid":true, "state": _states.INVENTORY}
 		return { "valid":true, "state": _states.IN_PLAY}
 	return { "valid":false, "state": _states.INVENTORY_DETAIL}
+	
+func doConsumePotion():
+	_terminal.writeLine("")
+	_terminal.writeLine("")
+	_terminal._color = _palette.GREEN
+	_terminal.writeLine("You drink the potion and suddenly feel better.")
+	_game.getCurrentCell().getCreature().drinkPotion()
+	var item = getItem()
+	if !item.reduceCount():
+		_game.getAvatar().removeItem(_game.getCurrentInventoryIndex())
+	return { "valid":true, "state": _states.IN_PLAY}
+	
+func consumeItem(item):
+	if item.getItemType()==itemDescriptors.POTION:
+		return doConsumePotion()
+	return { "valid":false, "state": _states.INVENTORY_DETAIL}
+	
+func doUse():
+	if getItem().canUse():
+		return consumeItem(getItem())
+	return { "valid":false, "state": _states.INVENTORY_DETAIL}
 
 func handleInput(command):
 	match command:
@@ -91,5 +115,7 @@ func handleInput(command):
 			return doDropOne()
 		"3":
 			return doEquip()
+		"4":
+			return doUse()
 		_:
 			return { "valid":false, "state": _states.INVENTORY_DETAIL}
