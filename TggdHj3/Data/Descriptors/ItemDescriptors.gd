@@ -4,6 +4,7 @@ var equipSlotDescriptors = load("res://Data/Descriptors/EquipSlotDescriptors.gd"
 
 const TROUSERS = "trousers"
 const JOOLS = "jools"
+const POTION = "potion"
 
 var itemDescriptors = {
 	TROUSERS:{
@@ -16,6 +17,12 @@ var itemDescriptors = {
 		"description": "jools",
 		"stackable": true,
 		"count":100,
+		"equipSlot": null
+	},
+	POTION:{
+		"description": "potion",
+		"stackable": true,
+		"count": 10,
 		"equipSlot": null
 	}
 }
