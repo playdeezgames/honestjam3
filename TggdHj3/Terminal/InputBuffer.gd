@@ -23,7 +23,7 @@ var _table = {
 	"Kp 9": "9",
 	"Enter": "\n",
 	"Kp Enter": "\n",
-	"Backspace": "\b"
+	"BackSpace": "\b"
 }
 
 var _buffer = ""
@@ -33,7 +33,7 @@ func _init():
 	
 func doBackspace():
 	if(_buffer.length()>0):
-		_buffer.erase(_buffer.left()-1,1)
+		_buffer = _buffer.left(_buffer.length()-1)
 	
 func doEnter():
 	var result = _buffer

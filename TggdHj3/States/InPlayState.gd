@@ -81,6 +81,8 @@ func showState():
 		_terminal.writeLine("5) Equipment")
 	if _game.getCurrentCell().hasFeatures():
 		_terminal.writeLine("6) Interact...")
+	if _game.getNextCell()!=null && _game.getNextCell().hasCreature():
+		_terminal.writeLine("7) Fight!")
 	_terminal.writeLine("0) Leave Play")
 	_terminal._color = _palette.GRAY
 	_terminal.writeLine("")
@@ -104,6 +106,11 @@ func onEquipment():
 func onInteract():
 	if _game.getCurrentCell().hasFeatures():
 		return { "valid": true, "state": _states.INTERACT}
+	return { "valid": false, "state": _states.IN_PLAY}
+	
+func onFight():
+	if _game.getNextCell()!=null && _game.getNextCell().hasCreature():
+		pass
 	return { "valid": false, "state": _states.IN_PLAY}
 
 func handleInput(command):
