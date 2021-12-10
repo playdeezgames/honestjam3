@@ -28,12 +28,20 @@ func showState():
 	_terminal.writeLine("")
 	_terminal.writeText(">")
 	
+func onWin():
+	_terminal.writeLine("")
+	_terminal._color = _palette.GREEN
+	_terminal.writeLine("YOU WIN!!!")
+	return { "valid":true, "state": _states.MAIN_MENU}
+	
 func onHit():
 	_terminal.writeLine("")
 	_terminal.writeLine("")
 	_terminal._color = _palette.GREEN
 	_terminal.writeLine("Correct! Victory!")
 	_game.getNextCell().putCreatureData(null)
+	if _game.isWin():
+		return onWin()
 	#TODO: creature drops?
 	return { "valid":true, "state": _states.IN_PLAY}
 	

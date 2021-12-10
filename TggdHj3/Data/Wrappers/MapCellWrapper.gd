@@ -6,6 +6,7 @@ var _featureWrapper = load("res://Data/Wrappers/FeatureWrapper.gd")
 var _terrainWrapper = load("res://Data/Wrappers/TerrainWrapper.gd")
 var _itemWrapper = load("res://Data/Wrappers/ItemWrapper.gd")
 var _itemDescriptors = load("res://Data/Descriptors/ItemDescriptors.gd").new()
+var creatureDescriptors = load("res://Data/Descriptors/CreatureDescriptors.gd").new()
 
 func _init(mapCell):
 	_mapCell = mapCell
@@ -60,3 +61,6 @@ func hasItems():
 	
 func removeItem(index):
 	_mapCell.items.remove(index)
+	
+func isWin():
+	return _mapCell.creature==null || _mapCell.creature.creatureType==creatureDescriptors.AVATAR

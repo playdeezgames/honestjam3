@@ -134,3 +134,11 @@ func moveBack():
 		return true
 	return false
 
+func isWin():
+	var data = getData()
+	var map = data.getMap()
+	for column in map.getColumns():
+		for row in map.getRows():
+			if !map.getCell(column, row).isWin():
+				return false	
+	return true
