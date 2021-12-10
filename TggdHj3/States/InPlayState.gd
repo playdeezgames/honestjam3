@@ -42,6 +42,7 @@ func describeAhead(cell):
 		_terminal.writeLine("Ahead of you is " + terrain.getDescription()+".")
 		if cell.hasCreature():
 			var creature = cell.getCreature()
+			_terminal._color = _palette.LIGHT_RED
 			_terminal.writeLine("You are facing "+creature.getDescription()+".")
 	else:
 		_terminal.writeLine("Ahead of you is the empty, lonely void, calling to you.")
@@ -110,7 +111,7 @@ func onInteract():
 	
 func onFight():
 	if _game.getNextCell()!=null && _game.getNextCell().hasCreature():
-		pass
+		return { "valid": true, "state": _states.FIGHT }
 	return { "valid": false, "state": _states.IN_PLAY}
 
 func handleInput(command):
@@ -129,5 +130,7 @@ func handleInput(command):
 			return onEquipment()
 		"6":
 			return onInteract()
+		"7":
+			return onFight()
 		_:
 			return { "valid": false, "state": _states.IN_PLAY}

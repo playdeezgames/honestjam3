@@ -28,3 +28,12 @@ func getHealth():
 	
 func getMaxHealth():
 	return _creature.maxHealth
+	
+func isDead():
+	return _creature.wounds >= _creature.maxHealth
+	
+func addWounds(wounds):
+	_creature.wounds = _creature.wounds + wounds
+	
+func getTarget():
+	return _creature.target

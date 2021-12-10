@@ -28,6 +28,7 @@ func initializeStates():
 	_stateTable[_states.INTERACT_CORNER] = load("res://States/InteractCornerState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.INTERACT_EDGE] = load("res://States/InteractEdgeState.gd").new(_terminal, _palette, _states, _game)
 	_stateTable[_states.OBLIVION] = load("res://States/OblivionState.gd").new(_terminal, _palette, _states, _game)
+	_stateTable[_states.FIGHT] = load("res://States/FightState.gd").new(_terminal, _palette, _states, _game)
 	_current = _states.MAIN_MENU
 
 func _init(terminal, palette):
