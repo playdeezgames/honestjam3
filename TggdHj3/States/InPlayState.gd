@@ -46,6 +46,9 @@ func describeAhead(cell):
 	else:
 		_terminal.writeLine("Ahead of you is the empty, lonely void, calling to you.")
 
+func describeAvatar(creature):
+	_terminal.writeLine("Health: "+String(creature.getHealth())+"/"+String(creature.getMaxHealth()))
+
 func showState():
 	autoSave()
 	_terminal._color = _palette.CYAN
@@ -59,6 +62,7 @@ func showState():
 	#var creature = cell.getCreature()
 	#_terminal.writeLine("Facing:" + String(creature.getFacing()))
 	
+	describeAvatar(cell.getCreature())
 	describeTerrain(cell)
 	describeFeatures(cell)
 	describeItems(cell)

@@ -22,3 +22,9 @@ func turnAround():
 func getDescription():
 	var descriptor = creatureDescriptors.getDescriptor(_creature.creatureType)
 	return descriptor.description
+	
+func getHealth():
+	return _creature.maxHealth - _creature.wounds
+	
+func getMaxHealth():
+	return _creature.maxHealth
