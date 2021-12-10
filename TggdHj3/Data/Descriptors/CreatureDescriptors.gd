@@ -10,7 +10,7 @@ var creatureDescriptors ={
 	},
 	DREAM_WRAITH:{
 		"description":"a dreamwraith",
-		"count":1
+		"count":12
 	}
 }
 
