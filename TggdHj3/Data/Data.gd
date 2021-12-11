@@ -31,6 +31,17 @@ func populateEdges(map):
 		map.getCell(0, row).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
 		map.getCell(map.getColumns()-1,row).addFeatureData(_feature.generate(featureDescriptors.MAP_EDGE))
 		
+func populateFeature(map, featureType):
+	var column = rng.randi_range(0, map.getColumns()-1)
+	var row = rng.randi_range(0, map.getRows()-1)
+	map.getCell(column, row).addFeatureData(_feature.generate(featureType))
+		
+func populateFeatures(map):
+	for featureType in featureDescriptors.getFeatureTypes():
+		var descriptor = featureDescriptors.getDescriptor(featureType)
+		for index in descriptor.count:
+			populateFeature(map, featureType)
+		
 func populateTerrain(map):
 	for column in map.getColumns():
 		for row in map.getRows():
@@ -63,6 +74,7 @@ func populateMap():
 	populateTerrain(map)
 	populateCorners(map)
 	populateEdges(map)
+	populateFeatures(map)
 	populateItems(map)
 	populateCreatures(map)
 
