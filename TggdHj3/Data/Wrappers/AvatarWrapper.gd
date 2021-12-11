@@ -25,6 +25,20 @@ func addItemData(item):
 
 func hasItems():
 	return _avatar.items.size()>0
+	
+func hasItemCount(itemType, amount):
+	var total = 0
+	for item in _avatar.items:
+		if item.itemType == itemType:
+			total = total + item.count
+	return total>=amount
+	
+func getItemCount(itemType):
+	var total = 0
+	for item in _avatar.items:
+		if item.itemType == itemType:
+			total = total + item.count
+	return total
 
 func getItems():
 	var result = []
@@ -34,6 +48,21 @@ func getItems():
 	
 func removeItem(index):
 	_avatar.items.remove(index)
+	
+func removeItemCount(itemType, count):
+	var newItems = []
+	for item in _avatar.items:
+		if item.itemType==itemType:
+			if item.count>count:
+				item.count = item.count-count
+				count = 0
+				newItems.push_back(item)
+			else:
+				count = count - item.count
+		else:
+			newItems.push_back(item)
+	_avatar.items = newItems
+	return count
 	
 func isEquipped(equipSlot):
 	return _avatar.equipSlots.has(equipSlot)

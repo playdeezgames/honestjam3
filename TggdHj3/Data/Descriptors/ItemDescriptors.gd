@@ -24,7 +24,7 @@ var itemDescriptors = {
 	POTION:{
 		"description": "potion",
 		"stackable": true,
-		"count": 100,
+		"count": 5,
 		"equipSlot": null,
 		"usable": true
 	}
